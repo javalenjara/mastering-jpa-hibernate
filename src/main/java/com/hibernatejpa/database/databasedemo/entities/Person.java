@@ -1,21 +1,37 @@
 package com.hibernatejpa.database.databasedemo.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import java.util.Date;
 
+@Entity
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
 public class Person {
+
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String location;
-    private Date birthdate;
+    private Date birthDate;
 
     public Person() {
     }
 
-    public Person(int id, String name, String location, Date birthdate) {
+    public Person(int id, String name, String location, Date birthDate) {
         this.id = id;
         this.name = name;
         this.location = location;
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
+    }
+
+    public Person(String name, String location, Date birthDate) {
+        super();
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
     }
 
     public int getId() {
@@ -42,12 +58,12 @@ public class Person {
         this.location = location;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(Date birthdate) {
+        this.birthDate = birthdate;
     }
 
     @Override
@@ -56,7 +72,7 @@ public class Person {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
-                ", birthdate=" + birthdate +
+                ", birthdate=" + birthDate +
                 '}';
     }
 }

@@ -28,7 +28,7 @@ public class PersonJdbcDAO {
             person.setId(resultSet.getInt("id"));
             person.setName(resultSet.getString("name"));
             person.setLocation(resultSet.getString("location"));
-            person.setBirthdate(resultSet.getTimestamp("birth_date"));
+            person.setBirthDate(resultSet.getTimestamp("birth_date"));
             return person;
         }
     }
@@ -63,7 +63,7 @@ public class PersonJdbcDAO {
                         person.getId(),
                         person.getName(),
                         person.getLocation(),
-                        new Timestamp(person.getBirthdate().getTime())});
+                        new Timestamp(person.getBirthDate().getTime())});
     }
 
     public int update(Person person) {
@@ -73,7 +73,7 @@ public class PersonJdbcDAO {
                 new Object[]{
                         person.getName(),
                         person.getLocation(),
-                        new Timestamp(person.getBirthdate().getTime()),
+                        new Timestamp(person.getBirthDate().getTime()),
                         person.getId()});
     }
 }
